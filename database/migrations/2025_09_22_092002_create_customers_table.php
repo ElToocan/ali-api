@@ -14,7 +14,7 @@ return new class extends Migration {
             $table->string('address');
             $table->string('postalCode');
             $table->string('city');
-            $table->string('email');
+            $table->string('email')->unique();
             $table->string('url');
             $table->foreignIdFor(User::class)->constrained('users');
             $table->timestamps();

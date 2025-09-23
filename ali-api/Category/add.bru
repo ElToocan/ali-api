@@ -1,0 +1,19 @@
+meta {
+  name: add
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{url}}/category?name=newCategory
+  body: none
+  auth: inherit
+}
+
+params:query {
+  name: newCategory
+}
+
+settings {
+  encodeUrl: true
+}

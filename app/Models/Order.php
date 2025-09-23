@@ -21,4 +21,13 @@ class Order extends Model
             'creationDate' => 'datetime',
         ];
     }
+
+    protected $fillable = [
+        'reference',
+        'creationDate',
+        'customer_id',
+        'amountET',
+        'amountVAT',
+    ];
+
 }

@@ -1,0 +1,27 @@
+meta {
+  name: update
+  type: http
+  seq: 3
+}
+
+put {
+  url: {{url}}/orders/{{order_id}}?reference=newRef&creationDate=2024-09-23 00:00:00&customer_id=2&amountEt=4&amountVAT=15
+  body: none
+  auth: inherit
+}
+
+params:query {
+  reference: newRef
+  creationDate: 2024-09-23 00:00:00
+  customer_id: 2
+  amountEt: 4
+  amountVAT: 15
+}
+
+vars:pre-request {
+  order_id: 1
+}
+
+settings {
+  encodeUrl: true
+}

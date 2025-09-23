@@ -20,4 +20,14 @@ class Customer extends Model
         return $this->belongsTo(User::class);
     }
 
+    protected $fillable = [
+        'name',
+        'address',
+        'postalCode',
+        'city',
+        'email',
+        'url',
+        'user_id',
+    ];
+
 }
