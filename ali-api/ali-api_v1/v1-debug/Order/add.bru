@@ -1,0 +1,23 @@
+meta {
+  name: add
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{urlDebug}}/orders?reference=refTest&creationDate=2025-09-23 00:00:00&customer_id=1&amountET=5&amountVAT=20
+  body: none
+  auth: inherit
+}
+
+params:query {
+  reference: refTest
+  creationDate: 2025-09-23 00:00:00
+  customer_id: 1
+  amountET: 5
+  amountVAT: 20
+}
+
+settings {
+  encodeUrl: true
+}

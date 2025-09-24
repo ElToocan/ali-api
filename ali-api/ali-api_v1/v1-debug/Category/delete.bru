@@ -1,0 +1,19 @@
+meta {
+  name: delete
+  type: http
+  seq: 4
+}
+
+delete {
+  url: {{urlDebug}}/category/{{category_id}}
+  body: none
+  auth: inherit
+}
+
+vars:pre-request {
+  category_id: 1
+}
+
+settings {
+  encodeUrl: true
+}

@@ -1,0 +1,30 @@
+meta {
+  name: update
+  type: http
+  seq: 3
+}
+
+put {
+  url: {{urlDebug}}/customers/{{customer_id}}?id=1&name=Thomas&address=15 rue des paquerettes&city=Marseille&postalCode=13000&email=Thomas-email@test.test&url=https://free.fr&user_id=1
+  body: none
+  auth: inherit
+}
+
+params:query {
+  id: 1
+  name: Thomas
+  address: 15 rue des paquerettes
+  city: Marseille
+  postalCode: 13000
+  email: Thomas-email@test.test
+  url: https://free.fr
+  user_id: 1
+}
+
+vars:pre-request {
+  customer_id: 1
+}
+
+settings {
+  encodeUrl: true
+}
