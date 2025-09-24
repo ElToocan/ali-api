@@ -1,0 +1,23 @@
+meta {
+  name: delete
+  type: http
+  seq: 4
+}
+
+delete {
+  url: {{url}}/category/{{category_id}}
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+vars:pre-request {
+  category_id: 26
+}
+
+settings {
+  encodeUrl: true
+}

@@ -1,0 +1,11 @@
+{
+  "version": "1",
+  "name": "alizon.btssioroc.com",
+  "type": "collection",
+  "ignore": [
+    "node_modules",
+    ".git"
+  ],
+  "size": 0.0030431747436523438,
+  "filesCount": 16
+}

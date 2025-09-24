@@ -1,0 +1,20 @@
+meta {
+  name: login
+  type: http
+  seq: 1
+}
+
+post {
+  url: http://ali-api.test/api/login?email=test@example.com&password=password
+  body: none
+  auth: inherit
+}
+
+params:query {
+  email: test@example.com
+  password: password
+}
+
+settings {
+  encodeUrl: true
+}

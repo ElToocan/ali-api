@@ -1,0 +1,23 @@
+meta {
+  name: add
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{url}}/category?name=newCategory
+  body: none
+  auth: bearer
+}
+
+params:query {
+  name: newCategory
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+settings {
+  encodeUrl: true
+}
