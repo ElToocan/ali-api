@@ -5,11 +5,13 @@ namespace App\Http\Controllers\v1;
 use App\Models\Category;
 use App\Models\Customer;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class CategoryController
 {
     public function index()
     {
+        Log::debug( 'The route /category has been accessed CategoryController@index');
         return Category::get('name');
     }
 
