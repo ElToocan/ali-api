@@ -20,7 +20,7 @@ Route::middleware('auth:sanctum')->middleware(LogCatching::class)->prefix('v1')-
 
 });
 
-if ( env('APP_DEBUG') === true) {
+if ( config('app.debug')) {
     Route::prefix('v1/debug')->middleware(LogCatching::class)->group(function () {
         Route::resource('customers', CustomerController::class);
         Route::resource('category', CategoryController::class);
