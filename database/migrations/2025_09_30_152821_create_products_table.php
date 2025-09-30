@@ -14,6 +14,7 @@ return new class extends Migration {
             $table->text('description');
             $table->float('purchasePrice');
             $table->float('sellingPrice');
+            $table->foreignIdFor(App\Models\Vat::class)->constrained();
             $table->timestamps();
         });
     }

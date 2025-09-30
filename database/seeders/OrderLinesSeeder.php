@@ -2,17 +2,17 @@
 
 namespace Database\Seeders;
 
-use App\Models\Order;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use \App\Models\OrderLines;
 
-class OrderSeeder extends Seeder
+class OrderLinesSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        Order::factory(100)->create();
+        OrderLines::factory(500)->create();
     }
 }

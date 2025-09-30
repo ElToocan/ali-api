@@ -18,11 +18,49 @@ class OrderController extends Controller
         $this->authorize('viewAny', Order::class);
 
         if (auth()->user()->can('viewAny-order', order::class)){
-            foreach (auth()->user()->customers as $customer){ $r[] = $customer->orders; };
-            return response()->json(['orders of customers of user' => $r]);
-        }else {
+
+            $data = [];
+
+            $customers = auth()->user()->customers;
+
+            foreach ($customers as $customer){
+
+                foreach ($customer->orders as $order){
+                    $data[$order->id]['order'] = $order->only('id', 'reference', 'amountET', 'amountVAT');
+
+                    foreach ($order->orderLines as $orderLine){
+                        $products[] = [
+                                      'product_id' => $orderLine->product->id,
+                                      'ref' => $orderLine->product->reference,
+                                      'name' => $orderLine->product->name,
+                                      'unitPrice' => $orderLine->unitPrice,
+                                      'amountVat' => $orderLine->amountVat
+                        ];
+                    }
+                    $data[$order->id]['products'] = $products;
+                    $products = [];
+                }
+            }
+            return response()->json( $data);
+        } else {
             return response('Unauthorized.', 401);
         }
+    }
+
+    public function addProduct( Order $order, \App\Models\Product $product, $quantity){
+
+//        dd($order);
+        $this->authorize('addProduct', $order);
+
+        $amountVat = ( $product->sellingPrice * $product->vat->rate ) / 100 ;
+        \App\Models\OrderLines::create(['unitPrice' => $product->sellingPrice,
+                                        'amountVat' => $amountVat,
+                                        'quantity' => $quantity,
+                                        'order_id' => $order->id,
+                                        'product_id' => $product->id,
+        ]);
+        return response()->json('Prodct added successfully.', 200);
+
     }
 
 

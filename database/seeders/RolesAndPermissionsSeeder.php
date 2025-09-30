@@ -40,6 +40,7 @@ class RolesAndPermissionsSeeder extends Seeder
             Permission::create(['name' => $permission.'-category']);
         }
 
+        Permission::create(['name' => 'addProduct-order']);
 
 
 
@@ -60,6 +61,9 @@ class RolesAndPermissionsSeeder extends Seeder
         $salesman->givePermissionTo('create-order');
         $salesman->givePermissionTo('read-order');
         $salesman->givePermissionTo('update-order');
+
+        $salesman->givePermissionTo('addProduct-order');
+
 
         $purchaser->givePermissionTo('viewAny-order');
         $purchaser->givePermissionTo('read-order');

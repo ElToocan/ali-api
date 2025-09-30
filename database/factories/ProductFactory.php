@@ -13,11 +13,12 @@ class ProductFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => $this->faker->name(),
+            'name' => $this->faker->word(),
             'reference' => $this->faker->word(),
             'description' => $this->faker->text(),
             'purchasePrice' => $this->faker->randomFloat(),
             'sellingPrice' => $this->faker->randomFloat(),
+            'vat_id' => \App\Models\Vat::inRandomOrder()->first()->id ,
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ];

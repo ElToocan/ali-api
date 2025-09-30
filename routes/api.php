@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\v1\CustomerController;
@@ -14,16 +15,22 @@ Route::get('/user', function (Request $request) {
 Route::post('/login', [\App\Http\Controllers\API\AuthController::class , 'login'])->middleware(LogCatching::class);
 
 Route::middleware('auth:sanctum')->prefix('v1')->group(function () {
+
     Route::resource('customers', CustomerController::class);
+
     Route::resource('category', CategoryController::class);
+
     Route::resource('orders', OrderController::class);
 
+    Route::get('/orders/{order}/add/{product}/{quantity}', [OrderController::class, 'addProduct']);
+
+
 });
 
 
-Route::middleware('auth:sanctum')->prefix('v1')->get('/test', function (\Illuminate\Http\Request $request) {
-    return response()->json($request->user());
-});
+//Route::middleware('auth:sanctum')->prefix('v1')->get('/test', function (\Illuminate\Http\Request $request) {
+//    return response()->json($request->user());
+//});
 
 if ( config('app.debug')) {
     Route::prefix('v1/debug')->middleware(LogCatching::class)->group(function () {

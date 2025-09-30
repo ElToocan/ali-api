@@ -63,4 +63,16 @@ class OrderPolicy
     {
         return false;
     }
+
+    public function addProduct(User $user): bool{
+
+        if($user->can('addProduct-order')) {
+            return true;
+        }else {
+            return false;
+        }
+
+
+    }
+
 }
