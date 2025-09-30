@@ -5,14 +5,18 @@ meta {
 }
 
 post {
-  url: http://ali-api.test/api/login?email=test@example.com&password=password
+  url: http://ali-api.test/api/login?email=saler01@alizon.fr&password=password
   body: none
   auth: inherit
 }
 
 params:query {
-  email: test@example.com
+  email: saler01@alizon.fr
   password: password
+}
+
+script:post-response {
+  bru.setEnvVar('token',res.body.data.token)
 }
 
 settings {

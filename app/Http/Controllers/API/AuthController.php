@@ -98,8 +98,6 @@ class AuthController extends BaseController
 
             $success['name'] =  $user->name;
 
-
-
             return $this->sendResponse($success, 'User login successfully.');
 
         }

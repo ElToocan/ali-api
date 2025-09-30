@@ -5,38 +5,58 @@ namespace App\Http\Controllers\v1;
 use App\Models\Category;
 use App\Models\Customer;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Log;
 
-class CategoryController
+class CategoryController extends Controller
 {
     public function index()
     {
-        Log::debug( 'The route /category has been accessed CategoryController@index');
-        return Category::get('name');
+        if (auth()->user()->can('viewAny-category', Category::class)){
+            return Category::get('name');
+        }else {
+            return response('Unauthorized.', 401);
+        }
     }
 
     public function update(Category $category, Request $request)
     {
-        $r['oldCategory'] = Category::find($category->id);
-        $category->update($request->all());
-        $r['updatedCategory'] = $category;
-        $r['state'] = 'category updated with success';
-        return $r;
+
+        if (auth()->user()->can('update-category', Category::class)){
+            $r['oldCategory'] = Category::find($category->id);
+            $category->update($request->all());
+            $r['updatedCategory'] = $category;
+            $r['state'] = 'category updated with success';
+            return $r;
+        }else {
+            return response('Unauthorized.', 401);
+        }
+
     }
 
     public function store( Request $request)
     {
 
-        Category::create($request->all());
-        $r['category'] = $request->all();
-        $r['state'] = 'category created with success';
-        return $r;
+        if (auth()->user()->can('create-category', Category::class)){
+            Category::create($request->all());
+            $r['category'] = $request->all();
+            $r['state'] = 'category created with success';
+            return $r;
+        }else {
+            return response('Unauthorized.', 401);
+        }
+
     }
 
     public function destroy(Category $category)
     {
-        $category->delete();
-        return 'category deleted with success';
+
+        if (auth()->user()->can('delete-category', Category::class)){
+            $category->delete();
+            return 'category deleted with success';
+        }else {
+            return response('Unauthorized.', 401);
+        }
     }
 
 

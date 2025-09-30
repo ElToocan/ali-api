@@ -1,0 +1,19 @@
+meta {
+  name: test
+  type: http
+  seq: 3
+}
+
+get {
+  url: http://ali-api.test/v1/api/test
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+settings {
+  encodeUrl: true
+}
