@@ -154,6 +154,10 @@ This project is a robust e-commerce API built with Laravel, designed to provide 
 ├── .gitignore
 └── README.md
 ```
+## 📸 Screenshots
+
+<img width="1916" height="925" alt="documentation" src="https://github.com/user-attachments/assets/149ae7f0-4b08-45e5-b010-7bc70830b6c4" />
+
 
 ## 📬 Contact
 
